@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уголок вайбкодера Алика ✨</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Фоновые неоновые пятна -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <!-- Анимированный фоновый холст Matrix / Neon Canvas -->
+    <canvas id="vibe-canvas"></canvas>
+
+    <div class="app-container">
+        <!-- Главная Шапка (Header) -->
+        <header class="main-header">
+            <div class="badge-container">
+                <span class="vibe-badge"><span class="pulse-dot"></span> LIVE VIBE</span>
+                <span class="vibe-badge glass-badge">☕ 100% Coffee Fuel</span>
+                <span class="vibe-badge glass-badge">🚀 No Bugs Allowed</span>
+            </div>
+
+            <!-- Главный Заголовок -->
+            <div class="title-wrapper">
+                <h1 class="hero-title">
+                    <span class="title-prefix">✨</span> 
+                    Уголок вайбкодера <span class="highlight-name">Алика</span> 
+                    <span class="title-suffix">💻</span>
+                </h1>
+                <p class="hero-subtitle">Место, где строки кода превращаются в чистую магию и вдохновение</p>
+            </div>
+        </header>
+
+        <!-- Карточка приветствия и текущего состояния -->
+        <main class="content-grid">
+            <!-- Секция Приветствия -->
+            <section class="card glass-card greeting-card">
+                <div class="card-header">
+                    <div class="time-pill" id="live-clock">00:00:00</div>
+                    <span class="card-tag">STATUS</span>
+                </div>
+                <div class="greeting-content">
+                    <h2 id="greeting-heading">Привет, Вайбкодер!</h2>
+                    <p id="greeting-subtext">Загружаем идеальную атмосферу для продуктивной работы...</p>
+                </div>
+                <div class="vibe-input-group">
+                    <label for="user-status-input">Твой текущий статус вайба:</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="user-status-input" value="Пишу чистый код под космические биты 🎧" placeholder="Введите ваш вайб...">
+                        <button id="update-status-btn" class="btn btn-secondary">Обновить</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Генератор Звукового Вайба (Web Audio Synth) -->
+            <section class="card glass-card audio-card">
+                <div class="card-header">
+                    <h3>🎧 Генератор Атмосферы</h3>
+                    <span class="card-tag neon-green">AUDIO</span>
+                </div>
+                <p class="card-desc">Включи фоновое звучание для фокусировки на кодинге:</p>
+                
+                <div class="audio-controls">
+                    <button class="sound-btn" data-sound="synth">
+                        <span class="icon">🎹</span>
+                        <span class="label">Synthwave Ambient</span>
+                    </button>
+                    <button class="sound-btn" data-sound="rain">
+                        <span class="icon">🌧️</span>
+                        <span class="label">Уютный Дождь</span>
+                    </button>
+                    <button class="sound-btn" data-sound="lofi">
+                        <span class="icon">☕</span>
+                        <span class="label">Lo-Fi Pulse</span>
+                    </button>
+                </div>
+                <div class="volume-box">
+                    <span>Громкость:</span>
+                    <input type="range" id="volume-slider" min="0" max="100" value="40">
+                </div>
+            </section>
+
+            <!-- Вайб-Терминал Кода -->
+            <section class="card glass-card terminal-card full-width">
+                <div class="terminal-header">
+                    <div class="window-buttons">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="terminal-title">alik@vibe-laptop: ~/code-corner</div>
+                    <button id="copy-code-btn" class="btn btn-sm">Скопировать код</button>
+                </div>
+                <pre class="terminal-body"><code id="code-content"><span class="kwd">const</span> <span class="var">alikVibe</span> = {
+    <span class="prop">coder</span>: <span class="str">"Алик"</span>,
+    <span class="prop">mode</span>: <span class="str">"Максимальный Вайб"</span>,
+    <span class="prop">energy</span>: <span class="num">100</span>,
+    <span class="prop">superpower</span>: <span class="str">"Превращать кофе в изящные алгоритмы ☕⚡"</span>,
+    <span class="prop">getVibeStatus</span>: <span class="kwd">function</span>() {
+        <span class="kwd">return</span> <span class="str">`Алик кодит с любовью и стилем! ✨`</span>;
+    }
+};
+
+<span class="comment">// Запуск системы вайба...</span>
+console.log(alikVibe.getVibeStatus());</code></pre>
+            </section>
+        </main>
+
+        <!-- Футер -->
+        <footer class="main-footer">
+            <p>Создано в <strong>Уголке вайбкодера Алика</strong> • 2026</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

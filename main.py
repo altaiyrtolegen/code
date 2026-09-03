@@ -4,38 +4,45 @@ import sys
 def get_greeting():
     hour = datetime.datetime.now().hour
     if 5 <= hour < 12:
-        return "Доброе утро"
+        return "☕ Доброе утро, вайбкодер!"
     elif 12 <= hour < 18:
-        return "Добрый день"
+        return "⚡ Добрый день, вайбкодер!"
     elif 18 <= hour < 23:
-        return "Добрый вечер"
+        return "🌙 Добрый вечер, вайбкодер!"
     else:
-        return "Доброй ночи"
+        return "🌌 Доброй ночи, вайбкодер!"
 
 def main():
-    # Настройка UTF-8 для вывода в консоли Windows
     if hasattr(sys.stdout, 'reconfigure'):
         sys.stdout.reconfigure(encoding='utf-8')
 
-    greeting_time = get_greeting()
-    
-    # ANSI цветные коды для стилизации вывода в консоли
-    BLUE = "\033[94m"
-    CYAN = "\033[96m"
-    GREEN = "\033[92m"
-    GOLD = "\033[93m"
-    RESET = "\033[0m"
-    BOLD = "\033[1m"
+    greeting = get_greeting()
 
-    border = f"{CYAN}★" + "═" * 46 + f"★{RESET}"
-    
-    print("\n" + border)
-    print(f"{BOLD}{GOLD}          👋 ДОБРО ПОЖАЛОВАТЬ! 👋{RESET}")
-    print(border)
-    print(f"  {GREEN}{greeting_time}! Рады видеть вас.{RESET}")
-    print(f"  {BLUE}Желаем продуктивного и отличного дня! ✨{RESET}")
-    print(border + "\n")
+    # ANSI Палитра Вайбкодера
+    CYAN = "\033[96m"
+    MAGENTA = "\033[95m"
+    PURPLE = "\033[35m"
+    YELLOW = "\033[93m"
+    GREEN = "\033[92m"
+    BOLD = "\033[1m"
+    RESET = "\033[0m"
+
+    title_art = f"""
+{MAGENTA}{BOLD}┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│    ✨ ✨  У Г О Л О К   В А Й Б К О Д Е Р А   А Л И К А  ✨ ✨ │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘{RESET}"""
+
+    status_box = f"""{CYAN}┌── [ СТАТУС ВАЙБА ] ─────────────────────────────────────────┐
+│ {GREEN}{greeting:<57}{CYAN} │
+│ {YELLOW}🎵 Настроение: Чилово программируем под lo-fi / synthwave {CYAN}│
+│ {MAGENTA}🚀 Статус: Код пишется самопроизвольно и без багов        {CYAN}│
+└─────────────────────────────────────────────────────────────┘{RESET}"""
+
+    print(title_art)
+    print(status_box)
+    print(f"\n{BOLD}{PURPLE}  > Нажми CTRL+C для выхода или получай удовольствие от кода!{RESET}\n")
 
 if __name__ == "__main__":
     main()
-
