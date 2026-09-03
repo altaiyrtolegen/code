@@ -24,6 +24,7 @@
         <header class="main-header">
             <div class="badge-container">
                 <span class="vibe-badge"><span class="pulse-dot"></span> LIVE VIBE</span>
+                <span class="vibe-badge glass-badge">🎓 18 Y.O. CS Student</span>
                 <span class="vibe-badge glass-badge">☕ 100% Coffee Fuel</span>
                 <span class="vibe-badge glass-badge">🚀 No Bugs Allowed</span>
             </div>
@@ -56,6 +57,45 @@
                     <div class="input-wrapper">
                         <input type="text" id="user-status-input" value="Пишу чистый код под космические биты 🎧" placeholder="Введите ваш вайб...">
                         <button id="update-status-btn" class="btn btn-secondary">Обновить</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Секция Про Автора (CS Vibe Coder Bio) -->
+            <section class="card glass-card bio-card">
+                <div class="card-header">
+                    <h3>👨‍💻 О Вайбкодере</h3>
+                    <span class="card-tag neon-purple">PROFILE</span>
+                </div>
+                <div class="bio-body">
+                    <div class="bio-intro">
+                        <span class="bio-avatar">⚡</span>
+                        <div>
+                            <h4 class="bio-name">Алик, 18 лет</h4>
+                            <p class="bio-role">Computer Science Student & Vibe Coder</p>
+                        </div>
+                    </div>
+                    <p class="bio-text">
+                        18-летний студент факультета Computer Science. Нахожусь в постоянном поиске идеального баланса между строгими алгоритмами, эстетикой интерфейсов и продуктивным кодингом под чиловую музыку.
+                    </p>
+                    <div class="bio-highlights">
+                        <div class="highlight-item">
+                            <span class="icon">🎯</span>
+                            <span><strong>Фокус:</strong> Алгоритмы, веб-разработка, AI-ассистенты и пет-проекты в 2 часа ночи.</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="icon">💡</span>
+                            <span><strong>Философия:</strong> «Код — это искусство. Если писать его с душой и правильным вайбом, багам просто не останется места».</span>
+                        </div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">JavaScript / TS</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">HTML5 & CSS3</span>
+                        <span class="tech-tag">Git & GitHub</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">Lo-Fi Beats 🎧</span>
                     </div>
                 </div>
             </section>
@@ -99,24 +139,26 @@
                     <div class="terminal-title">alik@vibe-laptop: ~/code-corner</div>
                     <button id="copy-code-btn" class="btn btn-sm">Скопировать код</button>
                 </div>
-                <pre class="terminal-body"><code id="code-content"><span class="kwd">const</span> <span class="var">alikVibe</span> = {
-    <span class="prop">coder</span>: <span class="str">"Алик"</span>,
-    <span class="prop">mode</span>: <span class="str">"Максимальный Вайб"</span>,
-    <span class="prop">energy</span>: <span class="num">100</span>,
-    <span class="prop">superpower</span>: <span class="str">"Превращать кофе в изящные алгоритмы ☕⚡"</span>,
+                <pre class="terminal-body"><code id="code-content"><span class="kwd">const</span> <span class="var">alikStudentProfile</span> = {
+    <span class="prop">name</span>: <span class="str">"Алик"</span>,
+    <span class="prop">age</span>: <span class="num">18</span>,
+    <span class="prop">major</span>: <span class="str">"Computer Science (CS)"</span>,
+    <span class="prop">status</span>: <span class="str">"Vibe Coder in Action"</span>,
+    <span class="prop">hobbies</span>: [<span class="str">"Пет-проекты"</span>, <span class="str">"Lo-Fi музыка"</span>, <span class="str">"Изучение AI"</span>, <span class="str">"Ночной кодинг"</span>],
+    <span class="prop">motto</span>: <span class="str">"Пиши код так, чтобы сам кайфовал от процесса ✨"</span>,
     <span class="prop">getVibeStatus</span>: <span class="kwd">function</span>() {
-        <span class="kwd">return</span> <span class="str">`Алик кодит с любовью и стилем! ✨`</span>;
+        <span class="kwd">return</span> <span class="str">`Алик (18 лет, CS) кодит с любовью и максимальным вайбом! 🚀`</span>;
     }
 };
 
 <span class="comment">// Запуск системы вайба...</span>
-console.log(alikVibe.getVibeStatus());</code></pre>
+console.log(alikStudentProfile.getVibeStatus());</code></pre>
             </section>
         </main>
 
         <!-- Футер -->
         <footer class="main-footer">
-            <p>Создано в <strong>Уголке вайбкодера Алика</strong> • 2026</p>
+            <p>Создано в <strong>Уголке вайбкодера Алика (18 лет, CS)</strong> • 2026</p>
         </footer>
     </div>
 

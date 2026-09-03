@@ -4,13 +4,13 @@ import sys
 def get_greeting():
     hour = datetime.datetime.now().hour
     if 5 <= hour < 12:
-        return "☕ Доброе утро, вайбкодер!"
+        return "☕ Доброе утро, Алик!"
     elif 12 <= hour < 18:
-        return "⚡ Добрый день, вайбкодер!"
+        return "⚡ Добрый день, Алик!"
     elif 18 <= hour < 23:
-        return "🌙 Добрый вечер, вайбкодер!"
+        return "🌙 Добрый вечер, Алик!"
     else:
-        return "🌌 Доброй ночи, вайбкодер!"
+        return "🌌 Доброй ночи, Алик!"
 
 def main():
     if hasattr(sys.stdout, 'reconfigure'):
@@ -34,15 +34,17 @@ def main():
 │                                                             │
 └─────────────────────────────────────────────────────────────┘{RESET}"""
 
-    status_box = f"""{CYAN}┌── [ СТАТУС ВАЙБА ] ─────────────────────────────────────────┐
+    bio_box = f"""{CYAN}┌── [ ПРОФИЛЬ: 18-ЛЕТНИЙ CS СТУДЕНТ & ВАЙБКОДЕР ] ────────────┐
 │ {GREEN}{greeting:<57}{CYAN} │
-│ {YELLOW}🎵 Настроение: Чилово программируем под lo-fi / synthwave {CYAN}│
-│ {MAGENTA}🚀 Статус: Код пишется самопроизвольно и без багов        {CYAN}│
+│ {YELLOW}🎓 Статус: 18 лет, студент Computer Science                   {CYAN}│
+│ {MAGENTA}💻 Стек: Python, JS/TS, C++, HTML/CSS, Git, Linux           {CYAN}│
+│ {CYAN}💡 Девиз: "Пиши код так, чтобы сам кайфовал от процесса"    {CYAN}│
+│ {GREEN}🎵 Настроение: Кодим пет-проекты под lo-fi / synthwave      {CYAN}│
 └─────────────────────────────────────────────────────────────┘{RESET}"""
 
     print(title_art)
-    print(status_box)
-    print(f"\n{BOLD}{PURPLE}  > Нажми CTRL+C для выхода или получай удовольствие от кода!{RESET}\n")
+    print(bio_box)
+    print(f"\n{BOLD}{PURPLE}  > Открой index.html в браузере для полного интерактивного вайба!{RESET}\n")
 
 if __name__ == "__main__":
     main()

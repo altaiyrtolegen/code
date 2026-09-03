@@ -270,6 +270,11 @@ body {
     background: rgba(16, 185, 129, 0.15);
 }
 
+.card-tag.neon-purple {
+    color: var(--neon-purple);
+    background: rgba(168, 85, 247, 0.15);
+}
+
 .time-pill {
     font-family: var(--font-mono);
     font-size: 1.1rem;
@@ -345,6 +350,95 @@ input[type="text"]:focus {
 .btn-secondary:hover {
     opacity: 0.9;
     transform: scale(1.02);
+}
+
+/* ==========================================================================
+   СЕКЦИЯ ПРО АВТОРА (BIO CARD)
+   ========================================================================== */
+
+.bio-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bio-intro {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bio-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+.bio-name {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.bio-role {
+    font-size: 0.85rem;
+    color: var(--neon-cyan);
+    font-weight: 600;
+}
+
+.bio-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.bio-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--neon-purple);
+    padding: 0.75rem 1rem;
+    border-radius: 0 10px 10px 0;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--text-main);
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.tech-tag {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+    background: rgba(168, 85, 247, 0.15);
+    border-color: var(--neon-purple);
+    color: var(--neon-purple);
 }
 
 /* ==========================================================================
