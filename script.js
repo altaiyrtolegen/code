@@ -1,5 +1,5 @@
 // ==========================================================================
-// УГОЛОК ВАЙБКОДЕРА АЛИКА — ИНТЕРАКТИВНЫЙ ЛОГИКА (SCRIPT.JS)
+// УГОЛОК ВАЙБКОДЕРА АЛИКА — ИНТЕРАКТИВНАЯ ЛОГИКА v2.0
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initCanvasVibes();
     initAudioSynth();
     initStatusUpdater();
-    initCodeCopy();
+    initCodeTabs();
+    initQuoteGenerator();
+    initThemeToggle();
 });
 
 // --------------------------------------------------------------------------
@@ -59,7 +61,7 @@ function initGreeting() {
 }
 
 // --------------------------------------------------------------------------
-// 2. АНИМИРОВАННЫЙ ФОНОВЫЙ ХОЛСТ (NEON FLOATING PARTICLES)
+// 2. АНИМИРОВАННЫЙ ФОНОВЫЙ ХОЛСТ (NEON FLOATING PARTICLES & LINES)
 // --------------------------------------------------------------------------
 
 function initCanvasVibes() {
@@ -76,7 +78,7 @@ function initCanvasVibes() {
     });
 
     const particles = [];
-    const particleCount = 40;
+    const particleCount = 45;
 
     for (let i = 0; i < particleCount; i++) {
         particles.push({
@@ -105,7 +107,7 @@ function initCanvasVibes() {
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
             ctx.fillStyle = p.color + p.alpha + ')';
-            ctx.shadowBlur = 10;
+            ctx.shadowBlur = 12;
             ctx.shadowColor = p.color + '0.8)';
             ctx.fill();
         });
@@ -117,7 +119,7 @@ function initCanvasVibes() {
 }
 
 // --------------------------------------------------------------------------
-// 3. ЗВУКОВОЙ СИНТЕЗАТОР ВАЙБА (WEB AUDIO API)
+// 3. ЗВУКОВОЙ СИНТЕЗАТОР ВАЙБА & ВИЗУАЛИЗАТОР (WEB AUDIO API)
 // --------------------------------------------------------------------------
 
 function initAudioSynth() {
@@ -186,9 +188,9 @@ function initAudioSynth() {
         });
     });
 
-    // Синтезатор Synthwave
+    // Синтезатор Synthwave Chords
     function createSynthWave(ctx) {
-        const freqs = [110, 164.81, 220, 329.63]; // A chord notes
+        const freqs = [110, 164.81, 220, 329.63, 440];
         freqs.forEach(f => {
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
@@ -198,9 +200,9 @@ function initAudioSynth() {
             osc.frequency.value = f;
 
             filter.type = 'lowpass';
-            filter.frequency.value = 400;
+            filter.frequency.value = 450;
 
-            gain.gain.value = 0.08;
+            gain.gain.value = 0.07;
 
             osc.connect(filter);
             filter.connect(gain);
@@ -211,7 +213,7 @@ function initAudioSynth() {
         });
     }
 
-    // Генератор Шума Дождя
+    // Генератор Шума Дождя & Грозы
     function createRainNoise(ctx) {
         const bufferSize = ctx.sampleRate * 2;
         const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
@@ -227,10 +229,10 @@ function initAudioSynth() {
 
         const filter = ctx.createBiquadFilter();
         filter.type = 'lowpass';
-        filter.frequency.value = 800;
+        filter.frequency.value = 750;
 
         const gain = ctx.createGain();
-        gain.gain.value = 0.15;
+        gain.gain.value = 0.16;
 
         whiteNoise.connect(filter);
         filter.connect(gain);
@@ -240,13 +242,13 @@ function initAudioSynth() {
         activeNodes.push(whiteNoise, gain, filter);
     }
 
-    // Lo-Fi Пакет Пулсов
+    // Lo-Fi Бит Импульс
     function createLofiPulse(ctx) {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
 
-        osc.type = 'sine';
-        osc.frequency.value = 130.81; // C3
+        osc.type = 'triangle';
+        osc.frequency.value = 130.81;
 
         gain.gain.value = 0.12;
 
@@ -259,8 +261,66 @@ function initAudioSynth() {
 }
 
 // --------------------------------------------------------------------------
-// 4. СТАТУС ВАЙБА И КОПИРОВАНИЕ КОДА
+// 4. ТАБЫ ТЕРМИНАЛА КОДА И КОПИРОВАНИЕ
 // --------------------------------------------------------------------------
+
+function initCodeTabs() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const copyBtn = document.getElementById('copy-code-btn');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.dataset.tab;
+
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+
+            btn.classList.add('active');
+            const activeTab = document.getElementById(target);
+            if (activeTab) activeTab.classList.add('active');
+        });
+    });
+
+    if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+            const activeTab = document.querySelector('.tab-content.active code');
+            if (activeTab) {
+                navigator.clipboard.writeText(activeTab.textContent).then(() => {
+                    const original = copyBtn.textContent;
+                    copyBtn.textContent = 'Скопировано! ✅';
+                    setTimeout(() => {
+                        copyBtn.textContent = original;
+                    }, 2000);
+                });
+            }
+        });
+    }
+}
+
+// --------------------------------------------------------------------------
+// 5. ГЕНЕРАТОР ЦИТАТ И ОБНОВЛЕНИЕ СТАТУСА
+// --------------------------------------------------------------------------
+
+function initQuoteGenerator() {
+    const quotes = [
+        '«Хороший код говорит сам за себя. Вайбовый код дарит вдохновение каждым!»',
+        '«Кодинг в 2 часа ночи под Lo-Fi — это особый вид медитации.» ☕',
+        '«Если твой алгоритм работает с первого раза — ты в правильном вайбе!» 🚀',
+        '«100% кофеина + 0% багов = идеальный день вайбкодера.» ⚡',
+        '«Каждая строка кода — это шаг к созданию собственной цифровой вселенной.» ✨'
+    ];
+
+    const quoteBtn = document.getElementById('new-quote-btn');
+    const quoteDisplay = document.getElementById('quote-display');
+
+    if (quoteBtn && quoteDisplay) {
+        quoteBtn.addEventListener('click', () => {
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            quoteDisplay.textContent = randomQuote;
+        });
+    }
+}
 
 function initStatusUpdater() {
     const input = document.getElementById('user-status-input');
@@ -279,20 +339,20 @@ function initStatusUpdater() {
     }
 }
 
-function initCodeCopy() {
-    const copyBtn = document.getElementById('copy-code-btn');
-    const codeContent = document.getElementById('code-content');
+// --------------------------------------------------------------------------
+// 6. СМЕНА ТЕМЫ (CYBERPUNK MODE)
+// --------------------------------------------------------------------------
 
-    if (copyBtn && codeContent) {
-        copyBtn.addEventListener('click', () => {
-            const textToCopy = codeContent.textContent;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                const originalText = copyBtn.textContent;
-                copyBtn.textContent = 'Скопировано! ✅';
-                setTimeout(() => {
-                    copyBtn.textContent = originalText;
-                }, 2000);
-            });
+function initThemeToggle() {
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('mode-cyberpunk');
+            if (document.body.classList.contains('mode-cyberpunk')) {
+                themeBtn.textContent = '🔥 Cyberpunk Active';
+            } else {
+                themeBtn.textContent = '⚡ Cyberpunk Mode';
+            }
         });
     }
 }
