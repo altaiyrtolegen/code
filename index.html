@@ -23,7 +23,8 @@
         <!-- Главная Шапка (Header) -->
         <header class="main-header">
             <div class="badge-container">
-                <span class="vibe-badge"><span class="pulse-dot"></span> LIVE VIBE</span>
+                <span class="vibe-badge" id="live-badge"><span class="pulse-dot"></span> LIVE VIBE</span>
+                <span class="vibe-badge glass-badge" id="theme-toggle">⚡ Cyberpunk Mode</span>
                 <span class="vibe-badge glass-badge">🎓 18 Y.O. CS Student</span>
                 <span class="vibe-badge glass-badge">🐶 Vibe Dog Approved</span>
                 <span class="vibe-badge glass-badge">☕ 100% Coffee Fuel</span>
@@ -36,11 +37,11 @@
                     Уголок вайбкодера <span class="highlight-name">Алика</span> 
                     <span class="title-suffix">💻</span>
                 </h1>
-                <p class="hero-subtitle">Место, где строки кода превращаются в чистую магию и вдохновение</p>
+                <p class="hero-subtitle">Место, где строки кода превращаются в чистую магию, музыку и вдохновение</p>
             </div>
         </header>
 
-        <!-- Карточка приветствия и текущего состояния -->
+        <!-- Карточки и разделы приложения -->
         <main class="content-grid">
             <!-- Секция Приветствия -->
             <section class="card glass-card greeting-card">
@@ -100,6 +101,32 @@
                 </div>
             </section>
 
+            <!-- Секция Статистики и Вдохновения -->
+            <section class="card glass-card stats-card">
+                <div class="card-header">
+                    <h3>📊 Вайб-Метрики & Цитаты</h3>
+                    <span class="card-tag neon-gold">METRICS</span>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number" id="coffee-counter">42</span>
+                        <span class="stat-label">Чашек кофе ☕</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="loc-counter">1,337</span>
+                        <span class="stat-label">Строк кода/день 💻</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="streak-counter">99.9%</span>
+                        <span class="stat-label">Bug-Free Streak 🛡️</span>
+                    </div>
+                </div>
+                <div class="quote-box" id="quote-display">
+                    «Хороший код говорит сам за себя. Вайбовый код дарит вдохновение каждому!»
+                </div>
+                <button id="new-quote-btn" class="btn btn-secondary" style="width: 100%;">🎲 Сгенерировать Цитату Вайба</button>
+            </section>
+
             <!-- Секция ASCII Арт Ноутбука и Собаки -->
             <section class="card glass-card ascii-card full-width">
                 <div class="card-header">
@@ -149,55 +176,97 @@
             <!-- Генератор Звукового Вайба (Web Audio Synth) -->
             <section class="card glass-card audio-card">
                 <div class="card-header">
-                    <h3>🎧 Генератор Атмосферы</h3>
-                    <span class="card-tag neon-green">AUDIO</span>
+                    <h3>🎧 Генератор Атмосферы & Звуков</h3>
+                    <span class="card-tag neon-green">AUDIO SYNTH</span>
                 </div>
-                <p class="card-desc">Включи фоновое звучание для фокусировки на кодинге:</p>
+                <p class="card-desc">Включи фоновое звучание и поймай волновой ритм:</p>
                 
                 <div class="audio-controls">
                     <button class="sound-btn" data-sound="synth">
                         <span class="icon">🎹</span>
-                        <span class="label">Synthwave Ambient</span>
+                        <span class="label">Synthwave 80s Ambient</span>
                     </button>
                     <button class="sound-btn" data-sound="rain">
                         <span class="icon">🌧️</span>
-                        <span class="label">Уютный Дождь</span>
+                        <span class="label">Уютный Дождь & Гроза</span>
                     </button>
                     <button class="sound-btn" data-sound="lofi">
                         <span class="icon">☕</span>
-                        <span class="label">Lo-Fi Pulse</span>
+                        <span class="label">Lo-Fi Pulse Beat</span>
                     </button>
                 </div>
+
+                <!-- Эквалайзер Visualizer -->
+                <div class="visualizer-bars">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+
                 <div class="volume-box">
                     <span>Громкость:</span>
                     <input type="range" id="volume-slider" min="0" max="100" value="40">
                 </div>
             </section>
 
-            <!-- Вайб-Терминал Кода -->
-            <section class="card glass-card terminal-card">
+            <!-- Вайб-Терминал Кода (Multi-Tab) -->
+            <section class="card glass-card terminal-card full-width">
                 <div class="terminal-header">
+                    <div class="terminal-tabs">
+                        <button class="tab-btn active" data-tab="tab-py">main.py</button>
+                        <button class="tab-btn" data-tab="tab-js">profile.js</button>
+                        <button class="tab-btn" data-tab="tab-json">vibes.json</button>
+                    </div>
                     <div class="window-buttons">
                         <span class="dot red"></span>
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <div class="terminal-title">alik@vibe-laptop: ~/code-corner</div>
                     <button id="copy-code-btn" class="btn btn-sm">Скопировать код</button>
                 </div>
-                <pre class="terminal-body"><code id="code-content"><span class="kwd">const</span> <span class="var">alikStudentProfile</span> = {
+                
+                <div class="terminal-body">
+                    <!-- Tab 1: main.py -->
+                    <div class="tab-content active" id="tab-py">
+                        <pre><code><span class="kwd">import</span> datetime
+
+<span class="kwd">def</span> <span class="var">alik_vibe_check</span>():
+    hour = datetime.datetime.now().hour
+    status = <span class="str">"Кодим на максимуме!"</span>
+    <span class="kwd">return</span> f<span class="str">"Алик (18 лет, CS) | Время: {hour}:00 | Статус: {status}"</span>
+
+<span class="kwd">if</span> __name__ == <span class="str">"__main__"</span>:
+    print(alik_vibe_check())</code></pre>
+                    </div>
+
+                    <!-- Tab 2: profile.js -->
+                    <div class="tab-content" id="tab-js">
+                        <pre><code><span class="kwd">const</span> <span class="var">alikStudentProfile</span> = {
     <span class="prop">name</span>: <span class="str">"Алик"</span>,
     <span class="prop">age</span>: <span class="num">18</span>,
-    <span class="prop">major</span>: <span class="str">"Computer Science (CS)"</span>,
-    <span class="prop">status</span>: <span class="str">"Vibe Coder in Action"</span>,
-    <span class="prop">companion</span>: <span class="str">"🐶 Vibe Dog (Bugs Inspector)"</span>,
+    <span class="prop">major</span>: <span class="str">"Computer Science"</span>,
+    <span class="prop">companion</span>: <span class="str">"🐶 Vibe Dog"</span>,
     <span class="prop">getVibeStatus</span>: <span class="kwd">function</span>() {
-        <span class="kwd">return</span> <span class="str">`Алик и его кодинг-пёс кодят с любовью и максимальным вайбом! 🚀`</span>;
+        <span class="kwd">return</span> <span class="str">`Алик и кодинг-пёс работают без багов! 🚀`</span>;
     }
 };
 
-<span class="comment">// Запуск системы вайба...</span>
 console.log(alikStudentProfile.getVibeStatus());</code></pre>
+                    </div>
+
+                    <!-- Tab 3: vibes.json -->
+                    <div class="tab-content" id="tab-json">
+                        <pre><code>{
+  <span class="prop">"coder"</span>: <span class="str">"Alik"</span>,
+  <span class="prop">"age"</span>: <span class="num">18</span>,
+  <span class="prop">"vibeLevel"</span>: <span class="str">"Over 9000"</span>,
+  <span class="prop">"favorites"</span>: [<span class="str">"Python"</span>, <span class="str">"TypeScript"</span>, <span class="str">"Synthwave"</span>, <span class="str">"Coffee"</span>]
+}</code></pre>
+                    </div>
+                </div>
             </section>
         </main>
 
