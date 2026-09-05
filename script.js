@@ -215,21 +215,21 @@ function initAudioSynth() {
         });
     });
 
-    // Синтезатор Synthwave Chords
+    // Синтезатор Deep Navy Ambient Chords
     function createSynthWave(ctx) {
-        const freqs = [110, 164.81, 220, 329.63, 440];
+        const freqs = [98.00, 146.83, 196.00, 293.66, 392.00]; // G minor chord ocean vibes
         freqs.forEach(f => {
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
             const filter = ctx.createBiquadFilter();
 
-            osc.type = 'sawtooth';
+            osc.type = 'sine';
             osc.frequency.value = f;
 
             filter.type = 'lowpass';
-            filter.frequency.value = 450;
+            filter.frequency.value = 350;
 
-            gain.gain.value = 0.07;
+            gain.gain.value = 0.08;
 
             osc.connect(filter);
             filter.connect(gain);
