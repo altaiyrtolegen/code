@@ -15,23 +15,22 @@ def get_greeting():
 
 def get_laptop_art(greeting):
     CYAN = "\033[96m"
-    MAGENTA = "\033[95m"
-    YELLOW = "\033[93m"
-    GREEN = "\033[92m"
+    WHITE = "\033[97m"
     BLUE = "\033[94m"
+    GREEN = "\033[92m"
     BOLD = "\033[1m"
     RESET = "\033[0m"
 
     return f"""
-{CYAN}          ┌───────────────────────────────────────────────────┐
-          │ {MAGENTA}alik@vibe-laptop: ~/vibes{CYAN}                         │
+{BLUE}          ┌───────────────────────────────────────────────────┐
+          │ {WHITE}alik@vibe-laptop: ~/navy-vibes{BLUE}                     │
           ├───────────────────────────────────────────────────┤
-          │  {GREEN}> PRINT("HELLO WORLD!"){CYAN}                          │
-          │  {YELLOW}> {greeting:<46}{CYAN} │
-          │  {BLUE}> COFFEE LEVEL: [████████████] 100%{CYAN}              │
-          │  {GREEN}> BUGS DETECTED: 0 | VIBE: 100%                      {CYAN}│
+          │  {CYAN}> PRINT("NAVY BLUE & WHITE CRYSTAL CODE")            {BLUE}│
+          │  {WHITE}> {greeting:<46}{BLUE} │
+          │  {CYAN}> COFFEE LEVEL: [████████████] 100%{BLUE}              │
+          │  {GREEN}> BUGS DETECTED: 0 | NAVY VIBE: 100%               {BLUE}│
           │                                                   │
-          │         {MAGENTA}{BOLD}✨  УГОЛОК ВАЙБКОДЕРА АЛИКА  ✨{RESET}{CYAN}           │
+          │         {WHITE}{BOLD}❄️  УГОЛОК ВАЙБКОДЕРА АЛИКА  ❄️{RESET}{BLUE}           │
           │                                                   │
           └───────────────────────────────────────────────────┘
          =======================================================
@@ -48,14 +47,15 @@ def get_laptop_art(greeting):
 """
 
 def get_dog_art():
-    YELLOW = "\033[93m"
+    WHITE = "\033[97m"
+    CYAN = "\033[96m"
     RESET = "\033[0m"
     return f"""
-{YELLOW}
+{WHITE}
                   / \\__
                  (    @\\___   🐶 ВЕРНЫЙ КОДИНГ-ПЁС АЛИКА 🐶
-                 /         O  "Гав! Код проверен, багов 0,
-                /   (_____/    вайб зашкаливает!"
+                 /         O  {CYAN}"Гав! Тёмно-синий стиль активирован,
+                /   (_____/    багов 0!"{WHITE}
                /─────/
               /   /   \\ 
              /   / \\   \\
@@ -69,10 +69,8 @@ def main():
 
     greeting = get_greeting()
     CYAN = "\033[96m"
-    MAGENTA = "\033[95m"
-    PURPLE = "\033[35m"
-    YELLOW = "\033[93m"
-    GREEN = "\033[92m"
+    WHITE = "\033[97m"
+    BLUE = "\033[94m"
     BOLD = "\033[1m"
     RESET = "\033[0m"
 
@@ -80,13 +78,13 @@ def main():
     print(get_dog_art())
 
     quotes = [
+        "Глубокий синий Navy и чистый белый — идеальная гармония для ума вайбкодера.",
         "Код — это искусство. Если писать его с душой, багам просто не останется места.",
-        "100% кофеина + 0% багов = идеальный день вайбкодера.",
-        "Пиши код так, чтобы сам кайфовал от процесса!"
+        "100% кофеина + 0% багов = идеальный день вайбкодера."
     ]
 
-    print(f"{BOLD}{GREEN}  💡 Цитата дня: \"{random.choice(quotes)}\"{RESET}")
-    print(f"{BOLD}{PURPLE}  🚀 Ноутбук и Кодинг-Пёс готовы! Открой index.html в браузере.{RESET}\n")
+    print(f"{BOLD}{WHITE}  💡 Цитата дня: \"{random.choice(quotes)}\"{RESET}")
+    print(f"{BOLD}{CYAN}  ❄️ Тёмно-синяя версия проекта готова! Открой index.html в браузере.{RESET}\n")
 
 if __name__ == "__main__":
     main()
