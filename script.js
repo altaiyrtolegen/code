@@ -112,8 +112,8 @@ function initCanvasVibes() {
             x: Math.random() * width,
             y: Math.random() * height,
             radius: Math.random() * 2.5 + 1,
-            color: Math.random() > 0.5 ? 'rgba(168, 85, 247, ' : 'rgba(6, 182, 212, ',
-            alpha: Math.random() * 0.5 + 0.2,
+            color: Math.random() > 0.5 ? 'rgba(0, 180, 216, ' : 'rgba(255, 255, 255, ',
+            alpha: Math.random() * 0.5 + 0.25,
             vx: (Math.random() - 0.5) * 0.4,
             vy: (Math.random() - 0.5) * 0.4
         });
