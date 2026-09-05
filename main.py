@@ -1,5 +1,6 @@
 import datetime
 import sys
+import random
 
 def get_greeting():
     hour = datetime.datetime.now().hour
@@ -12,23 +13,16 @@ def get_greeting():
     else:
         return "🌌 Доброй ночи, Алик!"
 
-def main():
-    if hasattr(sys.stdout, 'reconfigure'):
-        sys.stdout.reconfigure(encoding='utf-8')
-
-    greeting = get_greeting()
-
-    # ANSI Палитра Вайбкодера
+def get_laptop_art(greeting):
     CYAN = "\033[96m"
     MAGENTA = "\033[95m"
-    PURPLE = "\033[35m"
     YELLOW = "\033[93m"
     GREEN = "\033[92m"
     BLUE = "\033[94m"
     BOLD = "\033[1m"
     RESET = "\033[0m"
 
-    laptop_ascii = f"""
+    return f"""
 {CYAN}          ┌───────────────────────────────────────────────────┐
           │ {MAGENTA}alik@vibe-laptop: ~/vibes{CYAN}                         │
           ├───────────────────────────────────────────────────┤
@@ -53,7 +47,10 @@ def main():
  └───────────────────────────────────────────────────────────────┘{RESET}
 """
 
-    dog_ascii = f"""
+def get_dog_art():
+    YELLOW = "\033[93m"
+    RESET = "\033[0m"
+    return f"""
 {YELLOW}
                   / \\__
                  (    @\\___   🐶 ВЕРНЫЙ КОДИНГ-ПЁС АЛИКА 🐶
@@ -66,9 +63,30 @@ def main():
            (___)     (___){RESET}
 """
 
-    print(laptop_ascii)
-    print(dog_ascii)
-    print(f"{BOLD}{PURPLE}  > Ноутбук и Кодинг-Пёс готовы! Открой index.html в браузере.{RESET}\n")
+def main():
+    if hasattr(sys.stdout, 'reconfigure'):
+        sys.stdout.reconfigure(encoding='utf-8')
+
+    greeting = get_greeting()
+    CYAN = "\033[96m"
+    MAGENTA = "\033[95m"
+    PURPLE = "\033[35m"
+    YELLOW = "\033[93m"
+    GREEN = "\033[92m"
+    BOLD = "\033[1m"
+    RESET = "\033[0m"
+
+    print(get_laptop_art(greeting))
+    print(get_dog_art())
+
+    quotes = [
+        "Код — это искусство. Если писать его с душой, багам просто не останется места.",
+        "100% кофеина + 0% багов = идеальный день вайбкодера.",
+        "Пиши код так, чтобы сам кайфовал от процесса!"
+    ]
+
+    print(f"{BOLD}{GREEN}  💡 Цитата дня: \"{random.choice(quotes)}\"{RESET}")
+    print(f"{BOLD}{PURPLE}  🚀 Ноутбук и Кодинг-Пёс готовы! Открой index.html в браузере.{RESET}\n")
 
 if __name__ == "__main__":
     main()
