@@ -11,7 +11,34 @@ document.addEventListener('DOMContentLoaded', () => {
     initCodeTabs();
     initQuoteGenerator();
     initThemeToggle();
+    initAnimatedCounters();
 });
+
+// --------------------------------------------------------------------------
+// 7. АНИМАЦИЯ СЧЕТЧИКОВ МЕТРИК
+// --------------------------------------------------------------------------
+
+function initAnimatedCounters() {
+    const coffeeEl = document.getElementById('coffee-counter');
+    const locEl = document.getElementById('loc-counter');
+
+    function animateValue(obj, start, end, duration) {
+        if (!obj) return;
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            obj.innerHTML = Math.floor(progress * (end - start) + start);
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    animateValue(coffeeEl, 0, 42, 1500);
+    animateValue(locEl, 0, 1337, 2000);
+}
 
 // --------------------------------------------------------------------------
 // 1. ЧАСЫ И ДИНАМИЧЕСКОЕ ПРИВЕТСТВИЕ
