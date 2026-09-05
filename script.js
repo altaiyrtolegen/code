@@ -296,6 +296,31 @@ function initCodeTabs() {
             }
         });
     }
+
+    const runBtn = document.getElementById('run-code-btn');
+    const consoleOutput = document.getElementById('terminal-console-output');
+    const outputText = document.getElementById('output-text');
+
+    if (runBtn && consoleOutput && outputText) {
+        runBtn.addEventListener('click', () => {
+            const activeTab = document.querySelector('.tab-content.active');
+            if (!activeTab) return;
+            const tabId = activeTab.id;
+
+            consoleOutput.style.display = 'block';
+            outputText.textContent = 'Выполнение...';
+
+            setTimeout(() => {
+                if (tabId === 'tab-py') {
+                    outputText.textContent = 'Алик (18 лет, CS) | Час: ' + new Date().getHours() + ':00 | Вайб: Кодим на максимуме без ошибок!';
+                } else if (tabId === 'tab-js') {
+                    outputText.textContent = 'Алик и кодинг-пёс работают без багов! 🚀';
+                } else {
+                    outputText.textContent = 'JSON Parsed: { coder: "Alik", age: 18, vibeLevel: "Over 9000" } ✅';
+                }
+            }, 500);
+        });
+    }
 }
 
 // --------------------------------------------------------------------------

@@ -212,7 +212,7 @@
                 </div>
             </section>
 
-            <!-- Вайб-Терминал Кода (Multi-Tab) -->
+            <!-- Вайб-Терминал Кода (Multi-Tab Interactive Playground) -->
             <section class="card glass-card terminal-card full-width">
                 <div class="terminal-header">
                     <div class="terminal-tabs">
@@ -221,11 +221,9 @@
                         <button class="tab-btn" data-tab="tab-json">vibes.json</button>
                     </div>
                     <div class="window-buttons">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
+                        <button id="run-code-btn" class="btn btn-sm btn-secondary" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">▶ Запустить Код</button>
+                        <button id="copy-code-btn" class="btn btn-sm">Скопировать</button>
                     </div>
-                    <button id="copy-code-btn" class="btn btn-sm">Скопировать код</button>
                 </div>
                 
                 <div class="terminal-body">
@@ -233,13 +231,13 @@
                     <div class="tab-content active" id="tab-py">
                         <pre><code><span class="kwd">import</span> datetime
 
-<span class="kwd">def</span> <span class="var">alik_vibe_check</span>():
+<span class="kwd">def</span> <span class="var">get_alik_vibe</span>():
     hour = datetime.datetime.now().hour
-    status = <span class="str">"Кодим на максимуме!"</span>
-    <span class="kwd">return</span> f<span class="str">"Алик (18 лет, CS) | Время: {hour}:00 | Статус: {status}"</span>
+    status = <span class="str">"Кодим на максимуме без ошибок!"</span>
+    <span class="kwd">return</span> f<span class="str">"Алик (18 лет, CS) | Час: {hour}:00 | Вайб: {status}"</span>
 
 <span class="kwd">if</span> __name__ == <span class="str">"__main__"</span>:
-    print(alik_vibe_check())</code></pre>
+    print(get_alik_vibe())</code></pre>
                     </div>
 
                     <!-- Tab 2: profile.js -->
@@ -265,6 +263,11 @@ console.log(alikStudentProfile.getVibeStatus());</code></pre>
   <span class="prop">"vibeLevel"</span>: <span class="str">"Over 9000"</span>,
   <span class="prop">"favorites"</span>: [<span class="str">"Python"</span>, <span class="str">"TypeScript"</span>, <span class="str">"Synthwave"</span>, <span class="str">"Coffee"</span>]
 }</code></pre>
+                    </div>
+
+                    <!-- Симулятор Вывода Консоли -->
+                    <div id="terminal-console-output" style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px dashed rgba(255,255,255,0.15); color: #34d399; font-size: 0.85rem; display: none;">
+                        <span style="color: var(--neon-cyan);">$ Output:</span> <span id="output-text"></span>
                     </div>
                 </div>
             </section>
