@@ -12,7 +12,105 @@ document.addEventListener('DOMContentLoaded', () => {
     initQuoteGenerator();
     initThemeToggle();
     initAnimatedCounters();
+    initCSQuiz();
 });
+
+// --------------------------------------------------------------------------
+// 8. ИНТЕРАКТИВНЫЙ КВИЗ COMPUTER SCIENCE
+// --------------------------------------------------------------------------
+
+function initCSQuiz() {
+    const questions = [
+        {
+            q: "Вопрос 1: В чем временная сложность поиска по асимптотике O(log n)?",
+            options: ["A) Линейный поиск", "B) Бинарный поиск", "C) Поиск в ширину (BFS)", "D) Сортировка пузырьком"],
+            correct: 1
+        },
+        {
+            q: "Вопрос 2: Какая структура данных работает по принципу LIFO (Last In, First Out)?",
+            options: ["A) Стек (Stack)", "B) Очередь (Queue)", "C) Двусвязный список", "D) Хеш-таблица"],
+            correct: 0
+        },
+        {
+            q: "Вопрос 3: Какой паттерн программирования обеспечивает создание только одного экземпляра класса?",
+            options: ["A) Factory", "B) Observer", "C) Singleton", "D) Strategy"],
+            correct: 2
+        }
+    ];
+
+    let currentQ = 0;
+    let score = 0;
+
+    const qText = document.getElementById('quiz-question-text');
+    const optionsContainer = document.getElementById('quiz-options-container');
+    const feedback = document.getElementById('quiz-feedback');
+    const scoreBadge = document.getElementById('quiz-score-badge');
+    const nextBtn = document.getElementById('next-question-btn');
+
+    if (!qText || !optionsContainer) return;
+
+    function renderQuestion() {
+        const qData = questions[currentQ];
+        qText.textContent = qData.q;
+        optionsContainer.innerHTML = '';
+        feedback.textContent = '';
+        feedback.style.color = 'var(--text-white)';
+        nextBtn.style.display = 'none';
+
+        qData.options.forEach((optText, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'sound-btn quiz-option-btn';
+            btn.textContent = optText;
+            btn.addEventListener('click', () => handleAnswer(index, btn));
+            optionsContainer.appendChild(btn);
+        });
+    }
+
+    function handleAnswer(selectedIndex, clickedBtn) {
+        const qData = questions[currentQ];
+        const allBtns = optionsContainer.querySelectorAll('.quiz-option-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        if (selectedIndex === qData.correct) {
+            score++;
+            clickedBtn.style.borderColor = '#34d399';
+            clickedBtn.style.background = 'rgba(52, 211, 153, 0.2)';
+            feedback.textContent = '✅ Верно! Отличный результат!';
+            feedback.style.color = '#34d399';
+        } else {
+            clickedBtn.style.borderColor = '#ef4444';
+            clickedBtn.style.background = 'rgba(239, 68, 68, 0.2)';
+            feedback.textContent = `❌ Неправильно. Правильный ответ: ${qData.options[qData.correct]}`;
+            feedback.style.color = '#ef4444';
+        }
+
+        scoreBadge.textContent = `Счет: ${score} / ${questions.length}`;
+
+        if (currentQ < questions.length - 1) {
+            nextBtn.textContent = 'Следующий вопрос ➔';
+            nextBtn.style.display = 'inline-flex';
+        } else {
+            nextBtn.textContent = '🎉 Пройти заново';
+            nextBtn.style.display = 'inline-flex';
+        }
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (currentQ < questions.length - 1) {
+                currentQ++;
+                renderQuestion();
+            } else {
+                currentQ = 0;
+                score = 0;
+                scoreBadge.textContent = `Счет: 0 / ${questions.length}`;
+                renderQuestion();
+            }
+        });
+    }
+
+    renderQuestion();
+}
 
 // --------------------------------------------------------------------------
 // 7. АНИМАЦИЯ СЧЕТЧИКОВ МЕТРИК
