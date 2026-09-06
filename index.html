@@ -289,6 +289,32 @@
                 </div>
             </section>
 
+            <!-- Секция Интерактивный CS Квиз (Vibe Trivia Quiz) -->
+            <section class="card glass-card quiz-card full-width" id="quiz-section">
+                <div class="card-header">
+                    <h3>🎮 Квиз Вайбкодера: Проверь свои знании CS!</h3>
+                    <span class="card-tag neon-gold">TRIVIA QUIZ</span>
+                </div>
+                <div class="quiz-container">
+                    <div class="quiz-question-box">
+                        <h4 id="quiz-question-text" style="font-family: var(--font-heading); color: var(--text-white); font-size: 1.2rem; margin-bottom: 1rem;">
+                            Вопрос 1: В чем временная сложность поиска по асимптотике O(log n)?
+                        </h4>
+                        <div class="quiz-options-grid" id="quiz-options-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
+                            <button class="sound-btn quiz-option-btn" data-option="0">A) Линейный поиск</button>
+                            <button class="sound-btn quiz-option-btn" data-option="1">B) Бинарный поиск</button>
+                            <button class="sound-btn quiz-option-btn" data-option="2">C) Поиск в ширину (BFS)</button>
+                            <button class="sound-btn quiz-option-btn" data-option="3">D) Сортировка пузырьком</button>
+                        </div>
+                        <div id="quiz-feedback" style="margin-top: 1rem; font-weight: 700; font-size: 0.95rem; min-height: 24px;"></div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                            <span id="quiz-score-badge" style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--ice-cyan);">Счет: 0 / 3</span>
+                            <button id="next-question-btn" class="btn btn-secondary" style="display: none;">Следующий вопрос ➔</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Вайб-Терминал Кода (Multi-Tab Interactive Playground) -->
             <section class="card glass-card terminal-card full-width">
                 <div class="terminal-header">
