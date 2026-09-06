@@ -23,7 +23,7 @@ def get_laptop_art(greeting):
 
     return f"""
 {BLUE}          ┌───────────────────────────────────────────────────┐
-          │ {WHITE}alik@vibe-laptop: ~/navy-vibes{BLUE}                     │
+          │ {WHITE}alik@vibe-laptop: ~/navy-vibes                     │
           ├───────────────────────────────────────────────────┤
           │  {CYAN}> PRINT("NAVY BLUE & WHITE CRYSTAL CODE")            {BLUE}│
           │  {WHITE}> {greeting:<46}{BLUE} │
@@ -54,13 +54,34 @@ def get_dog_art():
 {WHITE}
                   / \\__
                  (    @\\___   🐶 ВЕРНЫЙ КОДИНГ-ПЁС АЛИКА 🐶
-                 /         O  {CYAN}"Гав! Тёмно-синий стиль активирован,
+                 /         O  {CYAN}"Гав! Дорожная карта CS 2026 загружена,
                 /   (_____/    багов 0!"{WHITE}
                /─────/
               /   /   \\ 
-             /   / \\   \\
+             /   / \   \
             /   /   \\   \\
            (___)     (___){RESET}
+"""
+
+def get_roadmap_summary():
+    CYAN = "\033[96m"
+    WHITE = "\033[97m"
+    GREEN = "\033[92m"
+    YELLOW = "\033[93m"
+    BOLD = "\033[1m"
+    RESET = "\033[0m"
+
+    return f"""
+{WHITE}{BOLD}🗺️  ДОРОЖНАЯ КАРТА ВАЙБКОДЕРА 2026 (CS ROADMAP & TECH RADAR):{RESET}
+  {GREEN}✓ STAGE 01:{RESET} Основы & CS Core (Python, C++, Алгоритмы) — 100%
+  {GREEN}✓ STAGE 02:{RESET} Vibe Web & UI (JS/TS, Glassmorphism, Canvas) — 100%
+  {CYAN}⚡ STAGE 03:{RESET} AI & Агентные Системы (LLM APIs, Vector DB) — 85%
+  {YELLOW}📅 STAGE 04:{RESET} System Architecture (Docker, Linux, Microservices) — Запланировано
+
+  {WHITE}{BOLD}📡 TECH RADAR:{RESET}
+   - {GREEN}ADOPT:{RESET} Python 3.14, TypeScript, Git, Web Audio, Linux
+   - {CYAN}TRIAL:{RESET} Rust, Go, Docker, WebAssembly
+   - {YELLOW}ASSESS:{RESET} Quantum SDKs, Neural Interfaces
 """
 
 def main():
@@ -70,12 +91,12 @@ def main():
     greeting = get_greeting()
     CYAN = "\033[96m"
     WHITE = "\033[97m"
-    BLUE = "\033[94m"
     BOLD = "\033[1m"
     RESET = "\033[0m"
 
     print(get_laptop_art(greeting))
     print(get_dog_art())
+    print(get_roadmap_summary())
 
     quotes = [
         "Глубокий синий Navy и чистый белый — идеальная гармония для ума вайбкодера.",
@@ -84,7 +105,7 @@ def main():
     ]
 
     print(f"{BOLD}{WHITE}  💡 Цитата дня: \"{random.choice(quotes)}\"{RESET}")
-    print(f"{BOLD}{CYAN}  ❄️ Тёмно-синяя версия проекта готова! Открой index.html в браузере.{RESET}\n")
+    print(f"{BOLD}{CYAN}  ❄️ Пройди CS Квиз и изучи Дорожную карту в index.html!{RESET}\n")
 
 if __name__ == "__main__":
     main()
