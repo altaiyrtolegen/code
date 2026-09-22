@@ -13,6 +13,10 @@ def get_greeting():
     else:
         return "🌌 Доброй ночи, Алик!"
 
+def calculate_vibe_score(loc=150, coffee=3, bugs=0):
+    score = round(min(100, max(10, (loc * 0.1) + (coffee * 12) - (bugs * 20))))
+    return score
+
 def get_laptop_art(greeting):
     CYAN = "\033[96m"
     WHITE = "\033[97m"
@@ -21,6 +25,8 @@ def get_laptop_art(greeting):
     BOLD = "\033[1m"
     RESET = "\033[0m"
 
+    vibe_score = calculate_vibe_score(150, 3, 0)
+
     return f"""
 {BLUE}          ┌───────────────────────────────────────────────────┐
           │ {WHITE}alik@vibe-laptop: ~/navy-vibes                     │
@@ -28,7 +34,7 @@ def get_laptop_art(greeting):
           │  {CYAN}> PRINT("NAVY BLUE & WHITE CRYSTAL CODE")            {BLUE}│
           │  {WHITE}> {greeting:<46}{BLUE} │
           │  {CYAN}> COFFEE LEVEL: [████████████] 100%{BLUE}              │
-          │  {GREEN}> BUGS DETECTED: 0 | NAVY VIBE: 100%               {BLUE}│
+          │  {GREEN}> BUGS: 0 | VIBE SCORE: {vibe_score}% 🔥                     {BLUE}│
           │                                                   │
           │         {WHITE}{BOLD}❄️  УГОЛОК ВАЙБКОДЕРА АЛИКА  ❄️{RESET}{BLUE}           │
           │                                                   │
@@ -54,16 +60,16 @@ def get_dog_art():
 {WHITE}
                   / \\__
                  (    @\\___   🐶 ВЕРНЫЙ КОДИНГ-ПЁС АЛИКА 🐶
-                 /         O  {CYAN}"Гав! Дорожная карта CS 2026 загружена,
-                /   (_____/    багов 0!"{WHITE}
+                 /         O  {CYAN}"Гав! Pomodoro таймер 25 мин взведён,
+                /   (_____/    готовы кодить!"{WHITE}
                /─────/
               /   /   \\ 
-             /   / \   \
+             /   / \\   \\
             /   /   \\   \\
            (___)     (___){RESET}
 """
 
-def get_roadmap_summary():
+def get_utility_summary():
     CYAN = "\033[96m"
     WHITE = "\033[97m"
     GREEN = "\033[92m"
@@ -71,17 +77,14 @@ def get_roadmap_summary():
     BOLD = "\033[1m"
     RESET = "\033[0m"
 
-    return f"""
-{WHITE}{BOLD}🗺️  ДОРОЖНАЯ КАРТА ВАЙБКОДЕРА 2026 (CS ROADMAP & TECH RADAR):{RESET}
-  {GREEN}✓ STAGE 01:{RESET} Основы & CS Core (Python, C++, Алгоритмы) — 100%
-  {GREEN}✓ STAGE 02:{RESET} Vibe Web & UI (JS/TS, Glassmorphism, Canvas) — 100%
-  {CYAN}⚡ STAGE 03:{RESET} AI & Агентные Системы (LLM APIs, Vector DB) — 85%
-  {YELLOW}📅 STAGE 04:{RESET} System Architecture (Docker, Linux, Microservices) — Запланировано
+    vibe_score = calculate_vibe_score(150, 3, 0)
 
-  {WHITE}{BOLD}📡 TECH RADAR:{RESET}
-   - {GREEN}ADOPT:{RESET} Python 3.14, TypeScript, Git, Web Audio, Linux
-   - {CYAN}TRIAL:{RESET} Rust, Go, Docker, WebAssembly
-   - {YELLOW}ASSESS:{RESET} Quantum SDKs, Neural Interfaces
+    return f"""
+{WHITE}{BOLD}🛠️  УТИЛИТАРНЫЙ НАБОР ВАЙБКОДЕРА (UTILITY SUITE v5.0):{RESET}
+  {GREEN}⏱️  Pomodoro Focus Timer:{RESET} 25:00 (Готов к сессии)
+  {CYAN}🧮  Vibe Calculator:{RESET} {vibe_score}% (Режим: Поток кодинга)
+  {GREEN}📝  Vibe Scratchpad:{RESET} Автосохранение заметок в LocalStorage
+  {YELLOW}🎮  CS Trivia Quiz:{RESET} 3 Интерактивных вопроса
 """
 
 def main():
@@ -96,7 +99,7 @@ def main():
 
     print(get_laptop_art(greeting))
     print(get_dog_art())
-    print(get_roadmap_summary())
+    print(get_utility_summary())
 
     quotes = [
         "Глубокий синий Navy и чистый белый — идеальная гармония для ума вайбкодера.",
@@ -105,22 +108,7 @@ def main():
     ]
 
     print(f"{BOLD}{WHITE}  💡 Цитата дня: \"{random.choice(quotes)}\"{RESET}")
-    print(f"{BOLD}{CYAN}  ❄️ Пройди CS Квиз и изучи Дорожную карту в index.html!{RESET}\n")
+    print(f"{BOLD}{CYAN}  ⏱️ Запусти Pomodoro таймер и калькулятор вайба в index.html!{RESET}\n")
 
 if __name__ == "__main__":
     main()
-print("Hello person who really reads this program :)")
-print("Hello person who really reads this program :)")
-
-print("Hello person who really reads this program :)")
-print("Hello person who really reads this program :)")
-print("Hello person who really reads this program :)")
-print("Hello person who really reads this program :)")
-
-print("Hello person who really reads this program :)")
-print("Hello person who really reads this program :)")
-print("Hello person who really reads this program :)")
-print("Hello person who really reads this program :)")
-
-print("Hello person who really reads this program :)")
-print("Hello person who really reads this program :)")
