@@ -15,7 +15,43 @@ document.addEventListener('DOMContentLoaded', () => {
     initCSQuiz();
     initVibeCalculator();
     initPomodoroTimer();
+    initScratchpad();
 });
+
+// --------------------------------------------------------------------------
+// 11. БЛОКНОТ ЗАМЕТОК И LOCALSTORAGE АВТОСОХРАНЕНИЕ
+// --------------------------------------------------------------------------
+
+function initScratchpad() {
+    const textarea = document.getElementById('vibe-notes-input');
+    const status = document.getElementById('notes-save-status');
+    const clearBtn = document.getElementById('clear-notes-btn');
+
+    if (!textarea) return;
+
+    const savedNotes = localStorage.getItem('alik_vibe_notes');
+    if (savedNotes) {
+        textarea.value = savedNotes;
+    }
+
+    textarea.addEventListener('input', () => {
+        localStorage.setItem('alik_vibe_notes', textarea.value);
+        if (status) {
+            status.textContent = 'Сохранено в памяти браузера! ✨';
+            setTimeout(() => {
+                status.textContent = 'Сохраняется автоматически 💾';
+            }, 1500);
+        }
+    });
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            textarea.value = '';
+            localStorage.removeItem('alik_vibe_notes');
+            if (status) status.textContent = 'Заметки очищены! 🗑️';
+        });
+    }
+}
 
 // --------------------------------------------------------------------------
 // 10. POMODORO ТАЙМЕР ФОКУСА (25 МИНУТ)
