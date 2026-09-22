@@ -14,7 +14,79 @@ document.addEventListener('DOMContentLoaded', () => {
     initAnimatedCounters();
     initCSQuiz();
     initVibeCalculator();
+    initPomodoroTimer();
 });
+
+// --------------------------------------------------------------------------
+// 10. POMODORO ТАЙМЕР ФОКУСА (25 МИНУТ)
+// --------------------------------------------------------------------------
+
+function initPomodoroTimer() {
+    let timer = null;
+    let totalSeconds = 25 * 60;
+    let isRunning = false;
+
+    const minEl = document.getElementById('pomo-minutes');
+    const secEl = document.getElementById('pomo-seconds');
+    const startBtn = document.getElementById('pomo-start-btn');
+    const pauseBtn = document.getElementById('pomo-pause-btn');
+    const resetBtn = document.getElementById('pomo-reset-btn');
+
+    if (!minEl || !secEl || !startBtn) return;
+
+    function updateDisplay() {
+        const m = Math.floor(totalSeconds / 60);
+        const s = totalSeconds % 60;
+        minEl.textContent = String(m).padStart(2, '0');
+        secEl.textContent = String(s).padStart(2, '0');
+    }
+
+    function playBellSound() {
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = 587.33; // D5 pitch bell
+            gain.gain.setValueAtTime(0.3, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.5);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 1.5);
+        } catch (e) {}
+    }
+
+    startBtn.addEventListener('click', () => {
+        if (isRunning) return;
+        isRunning = true;
+        timer = setInterval(() => {
+            if (totalSeconds > 0) {
+                totalSeconds--;
+                updateDisplay();
+            } else {
+                clearInterval(timer);
+                isRunning = false;
+                playBellSound();
+                alert('⏰ Время сессии фокусировки истекло! Сделайте 5-минутный перерыв.');
+            }
+        }, 1000);
+    });
+
+    pauseBtn.addEventListener('click', () => {
+        clearInterval(timer);
+        isRunning = false;
+    });
+
+    resetBtn.addEventListener('click', () => {
+        clearInterval(timer);
+        isRunning = false;
+        totalSeconds = 25 * 60;
+        updateDisplay();
+    });
+
+    updateDisplay();
+}
 
 // --------------------------------------------------------------------------
 // 9. КАЛЬКУЛЯТОР ВАЙБА И СЛОЖНОСТИ КОДА
