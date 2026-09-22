@@ -551,8 +551,27 @@ body {
 }
 
 /* ==========================================================================
-   ФУТЕР
+   СЕКЦИЯ VIBE CALC & UTILITIES
    ========================================================================== */
+
+.calc-card input[type="number"] {
+    transition: all 0.25s ease;
+    font-family: var(--font-mono);
+}
+
+.calc-card input[type="number"]:focus {
+    border-color: var(--ice-cyan);
+    box-shadow: 0 0 12px rgba(0, 180, 216, 0.35);
+}
+
+.calc-result-box {
+    transition: all 0.3s ease;
+}
+
+.calc-result-box:hover {
+    border-color: var(--ice-cyan);
+    box-shadow: 0 0 20px rgba(0, 180, 216, 0.25);
+}
 
 .main-footer {
     text-align: center;
