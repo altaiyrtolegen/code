@@ -13,7 +13,49 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     initAnimatedCounters();
     initCSQuiz();
+    initVibeCalculator();
 });
+
+// --------------------------------------------------------------------------
+// 9. КАЛЬКУЛЯТОР ВАЙБА И СЛОЖНОСТИ КОДА
+// --------------------------------------------------------------------------
+
+function initVibeCalculator() {
+    const locInput = document.getElementById('calc-loc-input');
+    const coffeeInput = document.getElementById('calc-coffee-input');
+    const bugsInput = document.getElementById('calc-bugs-input');
+    const resultEl = document.getElementById('calc-vibe-result');
+    const statusEl = document.getElementById('calc-vibe-status');
+
+    if (!locInput || !coffeeInput || !bugsInput || !resultEl) return;
+
+    function calculateVibe() {
+        const loc = Math.max(0, parseInt(locInput.value) || 0);
+        const coffee = Math.max(0, parseInt(coffeeInput.value) || 0);
+        const bugs = Math.max(0, parseInt(bugsInput.value) || 0);
+
+        let score = Math.round(Math.min(100, Math.max(10, (loc * 0.1) + (coffee * 12) - (bugs * 20))));
+
+        resultEl.textContent = `${score}% 🔥`;
+
+        if (score >= 85) {
+            statusEl.textContent = "🔥 Режим: Максимальный поток кодинга!";
+            statusEl.style.color = "#34d399";
+        } else if (score >= 60) {
+            statusEl.textContent = "⚡ Режим: Стабильный кодинг без суеты";
+            statusEl.style.color = "var(--ice-cyan)";
+        } else {
+            statusEl.textContent = "☕ Требуется доза кофе и дебаг!";
+            statusEl.style.color = "var(--accent-gold)";
+        }
+    }
+
+    locInput.addEventListener('input', calculateVibe);
+    coffeeInput.addEventListener('input', calculateVibe);
+    bugsInput.addEventListener('input', calculateVibe);
+
+    calculateVibe();
+}
 
 // --------------------------------------------------------------------------
 // 8. ИНТЕРАКТИВНЫЙ КВИЗ COMPUTER SCIENCE
